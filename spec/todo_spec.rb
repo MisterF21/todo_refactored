@@ -2,9 +2,9 @@ require 'rspec'
 require 'task'
 
 describe Task do
-  before do
-    Task.clear
-  end
+  # before do
+  #   Task.clear
+  # end
 
   it 'is initialized with a description' do
     test_task = Task.new('Wash the dishes')
@@ -15,24 +15,35 @@ describe Task do
     test_task.description.should eq "Wash the dishes"
   end
 
-  describe '.all' do
-    it 'starts as an empty array' do
-      Task.all.should eq []
-    end
-    it 'adds a task to the all tasks array' do
-      test_task = Task.new('Wash the dishes')
-      test_task.save
-      Task.all.should eq [test_task]
-    end
-  end
+  # describe '.create' do
+  #   it 'makes a new instance of Task' do
+  #     test_task = Task.create('Wash the dishes')
+  #     test_task.should be_an_instance_of Task
+  #   end
+  #   it 'saves the Task' do
+  #     test_task = Task.create('Wash the dishes')
+  #     Task.all.should eq [test_task]
+  #   end
+  # end
 
-  describe '.clear' do
-    it 'empties out the all saved tasks array' do
-      Task.new('Wash the dishes').save
-      Task.clear
-      Task.all.should eq []
-    end
-  end
+  # describe '.all' do
+  #   it 'starts as an empty array' do
+  #     Task.all.should eq []
+  #   end
+  #   it 'adds a task to the all tasks array' do
+  #     test_task = Task.new('Wash the dishes')
+  #     test_task.save
+  #     Task.all.should eq [test_task]
+  #   end
+  # end
+
+  # describe '.clear' do
+  #   it 'empties out the all saved tasks array' do
+  #     Task.new('Wash the dishes').save
+  #     Task.clear
+  #     Task.all.should eq []
+  #   end
+  # end
 
 end
 
@@ -48,4 +59,15 @@ describe List do
     test_list.tasks.should eq [task_to_add]
     test_list.tasks[0].description.should eq "rake"
   end
+
+  describe '.all' do
+    it 'starts as an empty array' do
+      List.all.should eq []
+    end
+    it 'adds a list to the all lists array' do
+      test_list = List.create('Work')
+      List.all.should eq [test_list]
+    end
+  end
+
 end
